@@ -40,4 +40,8 @@ public class Student {
     @ManyToMany(mappedBy ="student")
     private List<Sclass> sclass=new ArrayList<>();
 
+    @OneToMany(mappedBy = "studentId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<Attendance> attendanceCollection;
+
 }

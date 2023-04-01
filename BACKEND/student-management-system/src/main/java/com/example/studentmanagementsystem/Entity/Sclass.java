@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -32,4 +33,8 @@ public class Sclass {
     @JoinTable(name = "class_teacher",joinColumns = @JoinColumn(name="classId"),
             inverseJoinColumns = @JoinColumn(name="teacherId"))
     private List<Teacher> teacher=new ArrayList<>();
+
+    @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<Attendance> attendanceCollection;
 }
