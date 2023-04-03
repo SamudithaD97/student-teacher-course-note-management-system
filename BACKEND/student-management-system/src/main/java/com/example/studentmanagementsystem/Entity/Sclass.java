@@ -24,6 +24,9 @@ public class Sclass {
     @Column(name = "noOfStudents")
     private Long noOfStudents;
 
+    @Column(name = "noOfCredits")
+    private Long noOfCredits;
+
     @ManyToMany
     @JoinTable(name = "class_student",joinColumns = @JoinColumn(name="classId"),
     inverseJoinColumns = @JoinColumn(name="studentId"))
@@ -37,4 +40,8 @@ public class Sclass {
     @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
     @JsonIgnore
     private Collection<Attendance> attendanceCollection;
+
+    @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<Work> workCollection;
 }

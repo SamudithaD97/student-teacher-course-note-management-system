@@ -18,6 +18,9 @@ public class Student {
     @Column(name = "student_id")
     private Long studentId;
 
+    @Column(name = "reg_number",nullable = false,unique = true)
+    private String regNo;
+
     @Column(name = "full_name",nullable = false)
     private String fullName;
 

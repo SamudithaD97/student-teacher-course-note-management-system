@@ -23,7 +23,7 @@ public class Attendance {
     @JsonIgnore
     private Sclass sclass;
 
-    @JoinColumn(name = "classId",referencedColumnName = "classId")
+    @JoinColumn(name = "studentId",referencedColumnName = "studentId")
     @ManyToOne
     @JsonIgnore
     private Student student;

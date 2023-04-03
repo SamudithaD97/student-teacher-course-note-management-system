@@ -20,5 +20,13 @@ public class Work {
     @Column(name = "topic")
     private String topic;
 
+    @Column(name = "created_date")
+    private String docPath;
+
+    @JoinColumn(name = "classId",referencedColumnName = "classId")
+    @ManyToOne
+    @JsonIgnore
+    private Sclass sclass;
+
 
 }
