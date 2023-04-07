@@ -3,6 +3,8 @@ package com.example.studentmanagementsystem.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "student")
 public class Student {
@@ -40,8 +44,6 @@ public class Student {
     @JsonIgnore
     private Collection<Note> noteCollection;
 
-    @ManyToMany(mappedBy ="student")
-    private List<Sclass> sclass=new ArrayList<>();
 
     @OneToMany(mappedBy = "studentId",cascade = CascadeType.ALL)
     @JsonIgnore

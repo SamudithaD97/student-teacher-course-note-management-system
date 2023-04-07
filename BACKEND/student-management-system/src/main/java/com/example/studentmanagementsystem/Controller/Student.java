@@ -1,6 +1,7 @@
 package com.example.studentmanagementsystem.Controller;
 
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
+import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Service.Student.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,4 +24,4 @@ public class Student {
         return studentService.getStudentEnrolledClasses(studentId);}
 }
 
-}
+

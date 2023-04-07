@@ -1,11 +1,14 @@
-package com.example.studentmanagementsystem.Service.Student.StudentServiceImpl;
+package  com.example.studentmanagementsystem.Service.Teacher;
 
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
+import com.example.studentmanagementsystem.Entity.Teacher;
 import com.example.studentmanagementsystem.Repository.SclassRepository;
 import com.example.studentmanagementsystem.Repository.StudentRepository;
+import com.example.studentmanagementsystem.Repository.TeacherRepository;
 import com.example.studentmanagementsystem.Service.Student.StudentService;
+import com.example.studentmanagementsystem.Service.Teacher.TeacherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,47 +23,44 @@ import java.util.regex.Pattern;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class StudentServiceImpl implements StudentService {
+public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private final StudentRepository studentRepository;
 
     @Autowired
+    private final TeacherRepository teacherRepository;
+
+    @Autowired
     private final SclassRepository sclassRepository;
 
-    @Override
-    public List<StudentEnrolledClassesDto> getStudentEnrolledClasses(Long studentId){
-        List<StudentEnrolledClassesDto> classList = sclassRepository.findClassesByStudentId(studentId);
-        return classList;
-
-    }
 
     @Override
-    public Student registerStudent(Student student) {
-        boolean match =Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\w\\W]{8,}$",student.getPassword());
+    public Teacher registerTeacher(Teacher teacher) {
+        boolean match =Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\w\\W]{8,}$",teacher.getPassword());
 
         if(match){
             String pass = Hashing.sha256()
-                    .hashString(student.getPassword(), StandardCharsets.UTF_8)
+                    .hashString(teacher.getPassword(), StandardCharsets.UTF_8)
                     .toString();
-            student.setPassword(pass);
-            System.out.println(student);
-            Student newusr = studentRepository.save(student);
+            teacher.setPassword(pass);
+            System.out.println(teacher);
+            Teacher newusr = teacherRepository.save(teacher);
             return newusr;
         }
         return null;
     }
 
     @Override
-    public Student verifyUser(String username, String password) {
-        Student user = studentRepository.findByUsername(username);
+    public Teacher verifyUser(String username, String password) {
+        Teacher teacher = teacherRepository.findByUsername(username);
         //match password 8 characters and atleast one character and number
         boolean match = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\w\\W]{8,}$",password);
         System.out.println(match);
         String pass = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
-        return pass.equals(user.getPassword()) && match ? user : null;
+        return pass.equals(teacher.getPassword()) && match ? teacher : null;
     }
-    
-    
+
+
 }

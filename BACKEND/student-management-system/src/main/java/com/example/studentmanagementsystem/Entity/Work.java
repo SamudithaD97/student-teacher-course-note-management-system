@@ -2,10 +2,14 @@ package com.example.studentmanagementsystem.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Collection;
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "work")
 public class Work {
@@ -14,19 +18,19 @@ public class Work {
     @Column(name = "work_id")
     private Long workId;
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
+    @Column(name = "workCreatedDate")
+    private LocalDate workCreatedDate;
 
     @Column(name = "topic")
     private String topic;
 
-    @Column(name = "created_date")
+    @Column(name = "doc_path")
     private String docPath;
 
-    @JoinColumn(name = "classId",referencedColumnName = "classId")
+    @JoinColumn(name = "class_id",referencedColumnName = "class_id")
     @ManyToOne
     @JsonIgnore
-    private Sclass sclass;
+    private Sclass classId;
 
 
 }

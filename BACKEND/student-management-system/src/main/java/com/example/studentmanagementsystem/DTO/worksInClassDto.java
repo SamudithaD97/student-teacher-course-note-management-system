@@ -5,13 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Data
 @Getter
 @AllArgsConstructor
-public class StudentEnrolledClassesDto {
-    private String subject;
-    private Long noOfCredits;
+public class worksInClassDto {
+    private String topic;
+    private String docPath;
+    private LocalDate createdDate;
 }

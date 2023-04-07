@@ -2,11 +2,15 @@ package com.example.studentmanagementsystem.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.time.LocalDateTime;
 
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "note")
 public class Note {
@@ -18,8 +22,8 @@ public class Note {
     @Column(name = "description",nullable = false)
     private String description;
 
-    @Column(name = "createdDate")
-    private LocalDateTime createdDate;
+    @Column(name = "noteCreatedDate")
+    private LocalDateTime noteCreatedDate;
 
     @JoinColumn(name = "student_id",referencedColumnName = "student_id")
     @ManyToOne
