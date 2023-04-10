@@ -1,10 +1,14 @@
 package com.example.studentmanagementsystem.Service.Student.StudentServiceImpl;
 
+import com.example.studentmanagementsystem.DTO.MailData;
+import com.example.studentmanagementsystem.DTO.MailRequest;
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
 import com.example.studentmanagementsystem.Repository.SclassRepository;
 import com.example.studentmanagementsystem.Repository.StudentRepository;
+import com.example.studentmanagementsystem.Repository.TeacherRepository;
+import com.example.studentmanagementsystem.Service.Mail.EmailService;
 import com.example.studentmanagementsystem.Service.Student.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +32,11 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private final SclassRepository sclassRepository;
 
+    @Autowired
+    private final TeacherRepository teacherRepository;
+
+    private final EmailService emailService;
+
     @Override
     public List<StudentEnrolledClassesDto> getStudentEnrolledClasses(Long studentId){
         List<StudentEnrolledClassesDto> classList = sclassRepository.findClassesByStudentId(studentId);
@@ -46,6 +55,27 @@ public class StudentServiceImpl implements StudentService {
             student.setPassword(pass);
             System.out.println(student);
             Student newusr = studentRepository.save(student);
+
+            // Send Email
+            MailRequest mailRequest = new MailRequest();
+            mailRequest.setTo(newusr.getUsername());
+            mailRequest.setSubject("New User Created");
+            MailData mailData = new MailData();
+            String[] details = {"User Details"};
+            String[] detailsDescription1 = {"User Full Name:"+newusr.getFullName(),"Designation:Teacher","Contact Number:"+newusr.getContactNo()};
+            String[] detailsDescription2 = {};
+            String[] detailsDescription3 = {};
+            String[] detailsDescription4 = {};
+            mailData.setHeader("Student Management System- New User(Student) Created");
+            mailData.setHeaderDescription("You are successfully registered to the Student Management System.");
+            mailData.setDescription("");
+            mailData.setDetails(details);
+            mailData.setDetailsDescription1(detailsDescription1);
+            mailData.setDetailsDescription2(detailsDescription2);
+            mailData.setDetailsDescription3(detailsDescription3);
+            mailData.setDetailsDescription4(detailsDescription4);
+
+            emailService.sendEmailWithHtmlContent(mailRequest, mailData);
             return newusr;
         }
         return null;
