@@ -8,7 +8,7 @@ import sms from "../sms.png";
 import { BrowserRouter, Router, Link, useNavigate } from "react-router-dom";
 
 
-function Login() {
+function TeachersLogin() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,11 +16,12 @@ function Login() {
   async function handleSubmit(event) {
     event.preventDefault();
     await axios
-      .post("http://localhost:8080/student-login", {
+      .post("http://localhost:8080/teacher-login", {
         username: username,
         password: password,
       })
       .then((res) => {
+        alert("Teacher Login Successfully");
         localStorage.setItem('user', JSON.stringify(res.data));
         console.log(res);
         navigate('/card');
@@ -28,7 +29,7 @@ function Login() {
         setPassword("");
       })
       .catch((err) => {
-        alert("User Registation Failed");
+        alert("User Login Failed");
       });
   }
 
@@ -48,7 +49,7 @@ function Login() {
           <div className="flex flex-col space-y-20 ...">
             <div>
               <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
-              Student Management System- Students Login
+                Student Management System- Teachers Login
               </div>
             </div>
             <div>
@@ -97,4 +98,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default TeachersLogin;

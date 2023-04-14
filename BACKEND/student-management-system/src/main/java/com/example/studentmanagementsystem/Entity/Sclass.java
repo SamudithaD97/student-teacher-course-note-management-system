@@ -32,17 +32,13 @@ public class Sclass {
     @Column(name = "noOfCredits")
     private Long noOfCredits;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "class_student",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> studentId=new ArrayList<>();
+    @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<class_student> classStudentCollection;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "class_teacher",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "teacher_id"))
-    private List<Teacher> teacherId=new ArrayList<>();
+    @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<class_student> classTeacherCollection;
 
     @OneToMany(mappedBy = "classId",cascade = CascadeType.ALL)
     @JsonIgnore

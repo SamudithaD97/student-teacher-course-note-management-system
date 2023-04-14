@@ -42,11 +42,10 @@ public class Student {
 
     @OneToMany(mappedBy = "studentId",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Collection<Note> noteCollection;
-
+    private Collection<Attendance> attendanceCollection;
 
     @OneToMany(mappedBy = "studentId",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Collection<Attendance> attendanceCollection;
+    private Collection<class_student> classStudentCollection;
 
 }

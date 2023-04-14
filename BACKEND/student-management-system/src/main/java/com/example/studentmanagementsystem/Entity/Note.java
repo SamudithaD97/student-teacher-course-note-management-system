@@ -19,19 +19,18 @@ public class Note {
     @Column(name = "note_id")
     private Long noteId;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "description",nullable = false)
     private String description;
 
     @Column(name = "noteCreatedDate")
     private LocalDateTime noteCreatedDate;
 
-    @JoinColumn(name = "student_id",referencedColumnName = "student_id")
-    @ManyToOne
-    @JsonIgnore
-    private Student studentId;
+    @Column(name = "student_id")
+    private Long studentId;
 
-    @JoinColumn(name = "teacher_id",referencedColumnName = "teacher_id")
-    @ManyToOne
-    @JsonIgnore
-    private Teacher teacherId;
+    @Column(name = "teacher_id")
+    private Long teacherId;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface SclassRepository extends JpaRepository<Sclass, Long> {
 
-    @Query("SELECT new com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto(c.subject,c.noOfCredits) FROM Sclass c  JOIN c.studentId st  WHERE st.studentId = :studentId ")
+    @Query("SELECT new com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto(c.sclass.subject,c.sclass.noOfCredits) FROM class_student c  WHERE c.student.studentId IN :studentId ")
     List<StudentEnrolledClassesDto> findClassesByStudentId(Long studentId);
 
     @Query("SELECT a.subject FROM Sclass a WHERE  a.classId IN:classId")

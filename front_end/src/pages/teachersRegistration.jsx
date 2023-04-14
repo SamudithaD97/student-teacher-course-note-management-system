@@ -1,45 +1,45 @@
 import axios from "axios";
 import { useState } from "react";
-import "../components/registration.css";
+import "../components/teachersRegistration.css";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import sms from "../sms.png";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
-  const [username, setUsername] = useState("");
+function TeachersRegister() {
+  const [username,setUsername]=useState("");
   const [password, setPassword] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [fullName, setFullName] = useState("");
   const [birthDate, setBirthDate] = useState("");
-  const [regNo, setRegNo] = useState("");
+  const [designation, setDesignation] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     await axios
-      .post("http://localhost:8080/student-register", {
+      .post("http://localhost:8080/teacher-register", {
         username: username,
         password: password,
         contactNo: contactNo,
         fullName: fullName,
         birthDate: birthDate,
-        regNo : regNo
+        designation : designation
       })
       .then((res) => {
-        alert("Student Registation Successfully");
+        alert("Teacher Registation Successfully");
         console.log(res);
         setUsername("");
         setPassword("");
         setContactNo("");
         setFullName("");
         setBirthDate("");
-        setRegNo("");
-        navigate('/login');
+        setDesignation("");
+        navigate('/teachersLogin');
       })
       .catch((err) => {
-        alert("Student Registation Failed");
+        alert("Teacher Registation Failed");
       });
   }
 
@@ -58,7 +58,7 @@ function Register() {
           <div className="flex flex-col space-y-20 ...">
             <div>
             <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
-                FUTURE EDUCATION-Teacher Registation
+                FUTURE EDUCATION-Teachers Registation
               </div>
             </div>
             <div>
@@ -116,10 +116,10 @@ function Register() {
           </div>
           <div>
             <TextField
-              name="regNo"
-              placeholder="Registration No"
+              name="designation"
+              placeholder="Designation"
               onChange={(event) => {
-                setRegNo(event.target.value);
+                setDesignation(event.target.value);
               }}
               variant="standard"
               color="warning"
@@ -149,4 +149,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default TeachersRegister;

@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
 
     private final EmailService emailService;
 
-    @Override
+
     public List<StudentEnrolledClassesDto> getStudentEnrolledClasses(Long studentId){
         List<StudentEnrolledClassesDto> classList = sclassRepository.findClassesByStudentId(studentId);
         return classList;
