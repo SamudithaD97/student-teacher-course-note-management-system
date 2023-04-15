@@ -22,13 +22,16 @@ public class Attendance {
     @Column(name = "attendanceCreatedDate")
     private LocalDate attendanceCreatedDate;
 
+    @Column(name = "time_priod")
+    private String timePeriod;
+
     @JoinColumn(name = "class_id",referencedColumnName = "class_id")
     @ManyToOne
-    @JsonIgnore
+
     private Sclass classId;
 
     @JoinColumn(name = "student_id",referencedColumnName = "student_id")
     @ManyToOne
-    @JsonIgnore
+
     private Student studentId;
 }

@@ -19,4 +19,7 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     @Query("SELECT n FROM Note n  WHERE n.studentId IN :Id ")
     List<Note> findNotesByStudentId(Long Id);
 
+    @Query("SELECT n FROM Note n  WHERE n.teacherId IN :Id ")
+    List<Note> findNotesByTeacherId(Long Id);
+
 }

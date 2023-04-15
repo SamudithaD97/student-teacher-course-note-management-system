@@ -17,4 +17,10 @@ public interface SclassRepository extends JpaRepository<Sclass, Long> {
     @Query("SELECT a.subject FROM Sclass a WHERE  a.classId IN:classId")
     String findClassNameByAId(Long classId);
 
+    @Query("SELECT a.classId FROM Sclass a WHERE  a.subject IN:subject")
+    Long findClassIDByClassName(String subject);
+
+    @Query("SELECT a.subject FROM Sclass a")
+    List<String> getSubjects();
+
 }

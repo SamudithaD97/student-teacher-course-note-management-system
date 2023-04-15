@@ -1,8 +1,8 @@
 package com.example.studentmanagementsystem.Service.Student.StudentServiceImpl;
 
-import com.example.studentmanagementsystem.DTO.MailData;
-import com.example.studentmanagementsystem.DTO.MailRequest;
-import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
+import com.example.studentmanagementsystem.DTO.*;
+import com.example.studentmanagementsystem.Entity.Attendance;
+import com.example.studentmanagementsystem.Entity.Note;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
 import com.example.studentmanagementsystem.Repository.SclassRepository;
@@ -91,6 +91,20 @@ public class StudentServiceImpl implements StudentService {
 
         return pass.equals(user.getPassword()) && match ? user : null;
     }
-    
-    
+    @Override
+    public ResponseDto enrollClass(String subject, Long studentId) {
+        try {
+            Long classId = sclassRepository.findClassIDByClassName(subject);
+            studentRepository.enrollClass(studentId,classId);
+            return new ResponseDto("Successfully added", "01");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseDto("Failed", "02");
+
+        }
+    }
+
+
+
 }

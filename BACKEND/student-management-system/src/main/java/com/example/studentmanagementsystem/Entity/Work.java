@@ -27,9 +27,11 @@ public class Work {
     @Column(name = "doc_path")
     private String docPath;
 
+    @Column(name = "created-by")
+    private String createdBy;
+
     @JoinColumn(name = "class_id",referencedColumnName = "class_id")
     @ManyToOne
-    @JsonIgnore
     private Sclass classId;
 
 

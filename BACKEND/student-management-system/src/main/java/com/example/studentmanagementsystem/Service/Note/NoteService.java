@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface NoteService {
-    List<Note> getNotes(Long Id);
+    List<Note> getNotes(Long Id,Boolean isStudent);
 
     Note addNote(Note note);
 

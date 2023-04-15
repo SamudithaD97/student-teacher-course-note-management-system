@@ -26,9 +26,15 @@ public class NoteServiceImpl implements NoteService {
 
 
     @Override
-    public List<com.example.studentmanagementsystem.Entity.Note> getNotes(Long Id) {
-        List<com.example.studentmanagementsystem.Entity.Note> note = noteRepository.findNotesByStudentId(Id);
-        return note;
+    public List<com.example.studentmanagementsystem.Entity.Note> getNotes(Long Id,Boolean isStudent) {
+        if (isStudent.equals(true)){
+            List<com.example.studentmanagementsystem.Entity.Note> note = noteRepository.findNotesByStudentId(Id);
+            return note;
+        }else {
+            List<com.example.studentmanagementsystem.Entity.Note> note = noteRepository.findNotesByTeacherId(Id);
+            return note;
+        }
+
     }
 
     @Override

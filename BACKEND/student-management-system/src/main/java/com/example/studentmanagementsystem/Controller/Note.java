@@ -22,9 +22,10 @@ import java.util.List;
 public class Note {
     private final NoteService noteService;
     @GetMapping("/display/{Id}")
-    List<com.example.studentmanagementsystem.Entity.Note> getNotes(@PathVariable("Id") Long Id){
+    List<com.example.studentmanagementsystem.Entity.Note> getNotes(@RequestParam("Id") Long Id,
+                                                                   @RequestParam("isStudent") Boolean isStudent){
         log.info("Requested to get class Details By Student Id {}", Id);
-        return noteService.getNotes(Id);}
+        return noteService.getNotes(Id,isStudent);}
 
     @PostMapping(value = "/add")
     public ResponseEntity<?> addNote(@RequestBody com.example.studentmanagementsystem.Entity.Note note) {
