@@ -17,7 +17,7 @@ public class class_teacher {
     private Long classId;
 
     @Id
-    @Column(name = "student_id")
+    @Column(name = "teacher_Id")
     private Long teacherId;
 
     @JoinColumn(name = "teacher_id",referencedColumnName = "teacher_id")

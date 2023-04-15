@@ -1,5 +1,6 @@
 package com.example.studentmanagementsystem.Service.Teacher;
 
+import com.example.studentmanagementsystem.DTO.ResponseDto;
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
@@ -10,4 +11,7 @@ import java.util.List;
 public interface TeacherService {
     Teacher registerTeacher(Teacher teacher);
     Teacher verifyUser(String username, String password);
+
+
+    ResponseDto enrollClass(String subject, Long teacherId);
 }

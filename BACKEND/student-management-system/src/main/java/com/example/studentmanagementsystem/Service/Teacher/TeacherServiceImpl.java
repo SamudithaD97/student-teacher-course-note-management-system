@@ -1,9 +1,6 @@
 package  com.example.studentmanagementsystem.Service.Teacher;
 
-import com.example.studentmanagementsystem.DTO.MailData;
-import com.example.studentmanagementsystem.DTO.MailRequest;
-import com.example.studentmanagementsystem.DTO.Response;
-import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
+import com.example.studentmanagementsystem.DTO.*;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
 import com.example.studentmanagementsystem.Entity.Teacher;
@@ -88,6 +85,20 @@ public class TeacherServiceImpl implements TeacherService {
         String pass = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
         return pass.equals(teacher.getPassword()) && match ? teacher : null;
+    }
+
+    @Override
+    public ResponseDto enrollClass(String subject, Long teacherId) {
+        try {
+            Long classId = sclassRepository.findClassIDByClassName(subject);
+            teacherRepository.enrollClass(teacherId,classId);
+            return new ResponseDto("Successfully added", "01");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseDto("Failed", "02");
+
+        }
     }
 
 
