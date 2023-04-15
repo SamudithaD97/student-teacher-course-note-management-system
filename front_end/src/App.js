@@ -6,10 +6,9 @@ import HomePage from "./pages/homePage";
 import Card from "./pages/card";
 import Work from "./pages/work";
 
-import Notes from './components/Notes';
+import Notes from "./components/Notes";
+import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
 
-
-  
 import "./App.css";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import { render } from "react-dom";
@@ -20,16 +19,36 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<HomePage/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/teachersRegister" element={<TeachersRegister/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/teachersLogin" element={<TeachersLogin/>} />
-          <Route path="/forgotpassword" element={<Forgotpassword/>} />
-          <Route path="/card" element={<Card/>} />
-          <Route path="/work" element={<Work/>} />
-          <Route path="/Notes" element={<Notes/>} />
-          
+          <Route path="/" exact element={<HomePage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/teachersRegister" element={<TeachersRegister />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/teachersLogin" element={<TeachersLogin />} />
+          <Route path="/forgotpassword" element={<Forgotpassword />} />
+          <Route
+            path="/card"
+            element={
+              <ProtectedRoute>
+                <Card />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/work"
+            element={
+              <ProtectedRoute>
+                <Work />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notes"
+            element={
+              <ProtectedRoute>
+                <Notes />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

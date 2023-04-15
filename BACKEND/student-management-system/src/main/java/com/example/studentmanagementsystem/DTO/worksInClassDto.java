@@ -15,5 +15,5 @@ import java.time.LocalDateTime;
 public class worksInClassDto {
     private String topic;
     private String docPath;
-    private LocalDate createdDate;
+    private String createdDate;
 }
