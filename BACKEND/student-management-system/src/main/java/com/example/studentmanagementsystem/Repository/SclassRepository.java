@@ -2,6 +2,7 @@ package com.example.studentmanagementsystem.Repository;
 
 
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
+import com.example.studentmanagementsystem.DTO.TeacherEnrolledClassesDto;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +23,8 @@ public interface SclassRepository extends JpaRepository<Sclass, Long> {
 
     @Query("SELECT a.subject FROM Sclass a")
     List<String> getSubjects();
+
+    @Query("SELECT new com.example.studentmanagementsystem.DTO.TeacherEnrolledClassesDto(c.classId,c.sclass.subject,c.sclass.noOfCredits) FROM class_teacher c  WHERE c.teacherId IN :teacherId ")
+    List<TeacherEnrolledClassesDto> findClassesByTeacherId(Long teacherId);
 
 }

@@ -2,6 +2,7 @@ package com.example.studentmanagementsystem.Service.Teacher;
 
 import com.example.studentmanagementsystem.DTO.ResponseDto;
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
+import com.example.studentmanagementsystem.DTO.TeacherEnrolledClassesDto;
 import com.example.studentmanagementsystem.Entity.Sclass;
 import com.example.studentmanagementsystem.Entity.Student;
 import com.example.studentmanagementsystem.Entity.Teacher;
@@ -14,4 +15,6 @@ public interface TeacherService {
 
 
     ResponseDto enrollClass(String subject, Long teacherId);
+
+    List<TeacherEnrolledClassesDto> getTeacherEnrolledClasses(Long teacherId);
 }

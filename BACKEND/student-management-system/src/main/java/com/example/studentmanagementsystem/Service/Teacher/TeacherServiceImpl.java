@@ -101,5 +101,11 @@ public class TeacherServiceImpl implements TeacherService {
         }
     }
 
+    @Override
+    public List<TeacherEnrolledClassesDto> getTeacherEnrolledClasses(Long teacherId){
+        List<TeacherEnrolledClassesDto> classList = sclassRepository.findClassesByTeacherId(teacherId);
+        return classList;
+
+    }
 
 }
