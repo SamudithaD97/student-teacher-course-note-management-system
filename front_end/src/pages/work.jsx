@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useSearchParams} from "react-router-dom";
 
 
 function Work() {
 
     const [tableData, setTableData] = useState([]);
-  
+    const [searchParams, setSearchParams] = useSearchParams();
+
     useEffect(() => {
       async function fetchData() {
-        const response = await axios.get(`http://localhost:8080/work/get-work-inclass/${1}`);
+        const response = await axios.get(`http://localhost:8080/work/get-work-inclass/${searchParams.get('classid')}`);
         setTableData(response.data);
       }
       fetchData();
-    }, []); 
+    }, [searchParams]); 
   
     return (
       tableData.map((item, index) => (

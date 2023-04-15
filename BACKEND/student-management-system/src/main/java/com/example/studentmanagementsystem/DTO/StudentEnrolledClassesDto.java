@@ -12,6 +12,9 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class StudentEnrolledClassesDto {
+
+    private Long classId;
+
     private String subject;
     private Long noOfCredits;
 }

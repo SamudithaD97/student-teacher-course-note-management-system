@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface WorkRepository extends JpaRepository<Work, Long> {
 
-    @Query("SELECT new com.example.studentmanagementsystem.DTO.worksInClassDto(w.topic,w.docPath,w.workCreatedDate) FROM Work w  WHERE w.classId.classId IN :classId ")
+    @Query("SELECT new com.example.studentmanagementsystem.DTO.worksInClassDto(w.topic,w.docPath,cast(w.workCreatedDate as string)) FROM Work w  WHERE w.classId.classId IN :classId ")
     List<worksInClassDto> findClassesByStudentId(Long classId);
 }
