@@ -7,7 +7,7 @@ import sms from "../sms.png";
 import { useNavigate } from "react-router-dom";
 
 function TeachersRegister() {
-  const [username,setUsername]=useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [fullName, setFullName] = useState("");
@@ -25,7 +25,7 @@ function TeachersRegister() {
         contactNo: contactNo,
         fullName: fullName,
         birthDate: birthDate,
-        designation : designation
+        designation: designation
       })
       .then((res) => {
         alert("Teacher Registation Successfully");
@@ -46,10 +46,10 @@ function TeachersRegister() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
       <div className="hidden sm:block bg-indigo-900 h-screen w-3/4">
-  <div className="transform rotate-45 md:-rotate-45">
-    <img src={sms} alt="sms" className="object-contain" />
-  </div>
-</div>
+        <div className="transform rotate-45 md:-rotate-45">
+          <img src={sms} alt="sms" className="object-contain" />
+        </div>
+      </div>
       <div className="bg-white justify-center flex flex-col h-screen my-auto items-center bgimg bg-cover ">
         <form
           className="register-form flex flex-col space-y-10 ... "
@@ -57,7 +57,7 @@ function TeachersRegister() {
         >
           <div className="flex flex-col space-y-20 ...">
             <div>
-            <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
+              <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
                 FUTURE EDUCATION-Teachers Registation
               </div>
             </div>
@@ -69,6 +69,7 @@ function TeachersRegister() {
                 onChange={(event) => {
                   setUsername(event.target.value);
                 }}
+                style={{ width: 200, backgroundColor: 'gray' }}
                 variant="standard"
                 color="warning"
                 focused
@@ -127,20 +128,20 @@ function TeachersRegister() {
             />
           </div>
           <div>
-  <input type='date'
-         onChange={(event) => {
-           setBirthDate(event.target.value);
-         }}
-         variant="standard"
-         color="warning"
-         focused
-         name="birthDate"
-         placeholder="Enter your birth date (DD/MM/YYYY)"
-  />
-</div>
+            <input type='date'
+              onChange={(event) => {
+                setBirthDate(event.target.value);
+              }}
+              variant="standard"
+              color="warning"
+              focused
+              name="birthDate"
+              placeholder="Enter your birth date (DD/MM/YYYY)"
+            />
+          </div>
           <div>
             <Button variant="contained" size="large" type="submit">
-              Register 
+              Register
             </Button>
           </div>
         </form>

@@ -3,8 +3,10 @@ import { useState } from "react";
 import "../components/registration.css";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import sms from "../sms.png";
+import st1 from "../images/st3.jpg";
 import { useNavigate } from "react-router-dom";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -15,6 +17,15 @@ function Register() {
   const [regNo, setRegNo] = useState("");
   const navigate = useNavigate();
 
+  const datePickerStyles = {
+    width: 400,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 5,
+    border: 'solid 1px #F2F2F2',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5
+  };
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -25,7 +36,7 @@ function Register() {
         contactNo: contactNo,
         fullName: fullName,
         birthDate: birthDate,
-        regNo : regNo
+        regNo: regNo
       })
       .then((res) => {
         alert("Student Registation Successfully");
@@ -45,23 +56,23 @@ function Register() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
-      <div className="hidden sm:block bg-indigo-900 h-screen w-3/4">
-  <div className="transform rotate-45 md:-rotate-45">
-    <img src={sms} alt="sms" className="object-contain" />
-  </div>
-</div>
+      <div className="container bg-black">
+        <div className="">
+          <img src={st1} alt="sms" className="object-contain" />
+        </div>
+      </div>
       <div className="bg-white justify-center flex flex-col h-screen my-auto items-center bgimg bg-cover ">
+        <div>
+          <div className="mb-5 text-align: center font-bold underline text-5xl flex flex-col italic font-weight: 300]">
+            FUTURE EDUCATION-STUDENT
+          </div>
+        </div>
         <form
-          className="register-form flex flex-col space-y-10 ... "
+          className="register-form flex flex-col space-y-5 ... "
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col space-y-20 ...">
-            <div>
-            <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
-                FUTURE EDUCATION-Teacher Registation
-              </div>
-            </div>
-            <div>
+          <div className="flex flex-col">
+            <div >
               <TextField
                 name="username"
                 placeholder="Email"
@@ -71,6 +82,7 @@ function Register() {
                 }}
                 variant="standard"
                 color="warning"
+                style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
                 focused
               />
             </div>
@@ -83,6 +95,7 @@ function Register() {
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
+              style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
               variant="standard"
               color="warning"
               focused
@@ -97,7 +110,9 @@ function Register() {
                 setContactNo(event.target.value);
               }}
               variant="standard"
+              style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
               color="warning"
+
               focused
             />
           </div>
@@ -111,6 +126,7 @@ function Register() {
               }}
               variant="standard"
               color="warning"
+              style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
               focused
             />
           </div>
@@ -123,24 +139,29 @@ function Register() {
               }}
               variant="standard"
               color="warning"
+              style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
               focused
             />
           </div>
           <div>
-  <input type='date'
-         onChange={(event) => {
-           setBirthDate(event.target.value);
-         }}
-         variant="standard"
-         color="warning"
-         focused
-         name="birthDate"
-         placeholder="Enter your birth date (DD/MM/YYYY)"
-  />
-</div>
+            <label for="date">Select a date:</label>
+            <input type='date'
+              onChange={(event) => {
+                setBirthDate(event.target.value);
+              }}
+              variant="standard"
+              color="warning"
+              focused
+              name="birthDate"
+              className="date-picker"
+              placeholder="Enter your birth date (DD/MM/YYYY)"
+            />
+
+          </div>
+
           <div>
             <Button variant="contained" size="large" type="submit">
-              Register 
+              Register
             </Button>
           </div>
         </form>
