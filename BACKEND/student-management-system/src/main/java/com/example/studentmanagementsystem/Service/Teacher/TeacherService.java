@@ -14,7 +14,7 @@ public interface TeacherService {
     Teacher verifyUser(String username, String password);
 
 
-    ResponseDto enrollClass(String subject, Long teacherId);
+    ResponseDto enrollClass(Long classId, Long teacherId);
 
     List<TeacherEnrolledClassesDto> getTeacherEnrolledClasses(Long teacherId);
 }

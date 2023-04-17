@@ -7,6 +7,8 @@ import com.example.studentmanagementsystem.Repository.SclassRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,20 +21,20 @@ public class SClassServiceImpl implements SClassService {
     @Autowired
     private final SclassRepository sclassRepository;
     @Override
-    public List<String> getSubjects(){
-        List<String> subList=sclassRepository.getSubjects();
+    public List<Sclass> getSubjects(){
+        List<Sclass> subList=sclassRepository.getSubjects();
         return subList;
     }
 
     @Override
-    public ResponseDto createClass(Sclass sclass){
+    public ResponseEntity<?> createClass(Sclass sclass){
         try {
             Sclass sclass1 = sclassRepository.save(sclass);
-            return new ResponseDto("Successfully added", "01");
+            return new ResponseEntity<>(sclass1, HttpStatus.OK);
 
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseDto("Failed", "02");
+            return new ResponseEntity<>("Failed", HttpStatus.BAD_REQUEST);
 
         }
     }

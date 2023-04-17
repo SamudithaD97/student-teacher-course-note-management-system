@@ -26,8 +26,6 @@ public class Sclass {
     @Column(name = "subject",nullable = false)
     private String subject;
 
-    @Column(name = "noOfStudents")
-    private Long noOfStudents;
 
     @Column(name = "noOfCredits")
     private Long noOfCredits;

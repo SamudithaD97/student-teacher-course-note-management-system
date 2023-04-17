@@ -13,5 +13,5 @@ public interface StudentService {
     Student registerStudent(Student student);
     Student verifyUser(String username, String password);
 
-    ResponseDto enrollClass(String subject, Long studentId);
+    ResponseDto enrollClass(Long classId, Long studentId);
 }

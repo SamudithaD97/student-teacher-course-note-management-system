@@ -88,9 +88,9 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public ResponseDto enrollClass(String subject, Long teacherId) {
+    public ResponseDto enrollClass(Long classId, Long teacherId) {
         try {
-            Long classId = sclassRepository.findClassIDByClassName(subject);
+
             teacherRepository.enrollClass(teacherId,classId);
             return new ResponseDto("Successfully added", "01");
 

@@ -28,10 +28,10 @@ public class Student {
 
 
     @PostMapping(value = "/enroll")
-    public ResponseDto enrollClass(@RequestParam("subject") String subject,
+    public ResponseDto enrollClass(@RequestParam("classId") Long classId,
                                    @RequestParam("studentId") Long studentId) {
-        log.info("Requested to enroll class {} studentId{}", subject,studentId);
-        return studentService.enrollClass(subject,studentId);
+        log.info("Requested to enroll class {} studentId{}", classId,studentId);
+        return studentService.enrollClass(classId,studentId);
     }}
 
 

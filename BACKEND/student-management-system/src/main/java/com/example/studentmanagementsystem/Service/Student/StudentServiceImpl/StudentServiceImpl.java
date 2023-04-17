@@ -92,9 +92,8 @@ public class StudentServiceImpl implements StudentService {
         return pass.equals(user.getPassword()) && match ? user : null;
     }
     @Override
-    public ResponseDto enrollClass(String subject, Long studentId) {
+    public ResponseDto enrollClass(Long classId, Long studentId) {
         try {
-            Long classId = sclassRepository.findClassIDByClassName(subject);
             studentRepository.enrollClass(studentId,classId);
             return new ResponseDto("Successfully added", "01");
 

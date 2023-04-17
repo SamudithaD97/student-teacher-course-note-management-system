@@ -20,10 +20,10 @@ public class Teacher {
     private final TeacherService teacherService;
 
     @PostMapping(value = "/enroll")
-    public ResponseDto enrollClass(@RequestParam("subject") String subject,
+    public ResponseDto enrollClass(@RequestParam("classId") Long classId,
                                    @RequestParam("teacherId") Long teacherId) {
-        log.info("Requested to enroll class {} teacherId{}", subject,teacherId);
-        return teacherService.enrollClass(subject,teacherId);
+        log.info("Requested to enroll class {} teacherId{}", classId,teacherId);
+        return teacherService.enrollClass(classId,teacherId);
     }
 
     @GetMapping("/get-by-teacher-id/{teacherId}")
