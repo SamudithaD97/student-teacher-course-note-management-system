@@ -64,7 +64,7 @@ function Register() {
       <div className="bg-white justify-center flex flex-col h-screen my-auto items-center bgimg bg-cover ">
         <div>
           <div className="mb-5 text-align: center font-bold underline text-5xl flex flex-col italic font-weight: 300]">
-            FUTURE EDUCATION-STUDENT
+            FUTURE EDUCATION-STUDENT REGISTRATION
           </div>
         </div>
         <form
@@ -144,7 +144,7 @@ function Register() {
             />
           </div>
           <div>
-            <label for="date">Select a date:</label>
+            <label for="date">Select a Birth Day:</label>
             <input type='date'
               onChange={(event) => {
                 setBirthDate(event.target.value);

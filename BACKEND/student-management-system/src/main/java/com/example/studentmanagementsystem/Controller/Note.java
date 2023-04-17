@@ -1,5 +1,6 @@
 package com.example.studentmanagementsystem.Controller;
 
+import com.example.studentmanagementsystem.DTO.NoteDetailsDto;
 import com.example.studentmanagementsystem.DTO.NoteUpdateDto;
 import com.example.studentmanagementsystem.DTO.ResponseDto;
 import com.example.studentmanagementsystem.DTO.StudentEnrolledClassesDto;
@@ -21,9 +22,9 @@ import java.util.List;
 @RequestMapping("/note")
 public class Note {
     private final NoteService noteService;
-    @GetMapping("/display/{Id}")
-    List<com.example.studentmanagementsystem.Entity.Note> getNotes(@RequestParam("Id") Long Id,
-                                                                   @RequestParam("isStudent") Boolean isStudent){
+    @GetMapping("/display")
+    List<NoteDetailsDto> getNotes(@RequestParam("Id") Long Id,
+                                  @RequestParam("isStudent") Boolean isStudent){
         log.info("Requested to get class Details By Student Id {}", Id);
         return noteService.getNotes(Id,isStudent);}
 

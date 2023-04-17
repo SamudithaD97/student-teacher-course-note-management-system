@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
@@ -20,6 +21,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Transactional
     void enrollClass(@Param("studentId") Long studentId, @Param("classId") Long classId);
 
+    Optional<Student> findByStudentId(Long stId);
 }
 
 

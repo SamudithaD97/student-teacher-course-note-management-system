@@ -5,8 +5,8 @@ import TeachersLogin from "./pages/teachersLogin";
 import HomePage from "./pages/homePage";
 import Card from "./pages/card";
 import Work from "./pages/work";
+import Note from "./pages/note";
 
-import Notes from "./components/Notes";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
 
 import "./App.css";
@@ -24,6 +24,7 @@ function App() {
           <Route path="/teachersRegister" element={<TeachersRegister />} />
           <Route path="/login" element={<Login />} />
           <Route path="/teachersLogin" element={<TeachersLogin />} />
+          <Route path="/note" element={<Note />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
           <Route
             path="/card"
@@ -42,10 +43,10 @@ function App() {
             }
           />
           <Route
-            path="/notes"
+            path="/note"
             element={
               <ProtectedRoute>
-                <Notes />
+                <Note />
               </ProtectedRoute>
             }
           />

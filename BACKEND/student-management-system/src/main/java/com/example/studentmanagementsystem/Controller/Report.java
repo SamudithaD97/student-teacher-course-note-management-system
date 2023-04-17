@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/attendance")
+@RequestMapping("/report")
 public class Report {
 
     private final ReportService reportService;

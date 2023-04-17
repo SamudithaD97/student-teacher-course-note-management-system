@@ -1,5 +1,6 @@
 package com.example.studentmanagementsystem.Service.Note;
 
+import com.example.studentmanagementsystem.DTO.NoteDetailsDto;
 import com.example.studentmanagementsystem.DTO.NoteUpdateDto;
 import com.example.studentmanagementsystem.DTO.ResponseDto;
 import com.example.studentmanagementsystem.Entity.Note;
@@ -26,12 +27,12 @@ public class NoteServiceImpl implements NoteService {
 
 
     @Override
-    public List<com.example.studentmanagementsystem.Entity.Note> getNotes(Long Id,Boolean isStudent) {
-        if (isStudent.equals(true)){
-            List<com.example.studentmanagementsystem.Entity.Note> note = noteRepository.findNotesByStudentId(Id);
+    public List<NoteDetailsDto> getNotes(Long Id,Boolean isStudent) {
+        if (isStudent==true){
+            List<NoteDetailsDto> note = noteRepository.findNotesByStudentId(Id);
             return note;
         }else {
-            List<com.example.studentmanagementsystem.Entity.Note> note = noteRepository.findNotesByTeacherId(Id);
+            List<NoteDetailsDto> note = noteRepository.findNotesByTeacherId(Id);
             return note;
         }
 

@@ -4,7 +4,7 @@ import "../components/login.css";
 import Forgotpassword from "./forgotpassword";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import sms from "../sms.png";
+import st1 from "../images/st3.jpg";
 import { BrowserRouter, Router, Link, useNavigate } from "react-router-dom";
 
 
@@ -28,38 +28,40 @@ function Login() {
         setPassword("");
       })
       .catch((err) => {
-        alert("User Registation Failed");
+        alert("User Login Failed");
       });
   }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 ">
-      <div className="hidden sm:block bg-indigo-900 h-screen w-75 ">
-        {" "}
-        <div className="transform rotate-45 md:-rotate-45 ">
-          <img src={sms} alt="sms" width="800" height="10000" />
+      <div className="container bg-black">
+        <div className="">
+          <img src={st1} alt="sms" className="object-contain" />
         </div>
       </div>
       <div className="bg-white justify-center flex flex-col h-screen my-auto items-center bgimg bg-cover ">
+        <div>
+          <div className="mb-5 text-align: center font-bold underline text-5xl flex flex-col italic font-weight: 300]">
+            FUTURE EDUCATION-STUDENT LOGIN
+          </div>
+        </div>
+      
         <form
           className="register-form flex flex-col space-y-10 ... "
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col space-y-20 ...">
-            <div>
-              <div className="text-align: center font-bold ... underline underline-offset-4 ... text-5xl ...flex flex-col italic ... font-weight: 300]">
-              Student Management System- Students Login
-              </div>
-            </div>
-            <div>
+          <div className="flex flex-col">
+            <div >
               <TextField
                 name="username"
-                placeholder="E-mail"
+                placeholder="Email"
+                type={'email'}
                 onChange={(event) => {
                   setUsername(event.target.value);
                 }}
                 variant="standard"
                 color="warning"
+                style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
                 focused
               />
             </div>
@@ -73,8 +75,9 @@ function Login() {
                 setPassword(event.target.value);
               }}
               variant="standard"
-              color="warning"
-              focused
+                color="warning"
+                style={{ width: 400, backgroundColor: '#F2F2F2', borderRadius: 5, border: 'solid 1px #F2F2F2', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}
+                focused
               helperText="Password must be atleast 8 characters"
             />
           </div>
@@ -92,7 +95,7 @@ function Login() {
             <Link to="/register">New user?</Link>
           </div>
         </form>
-      </div>
+        </div>
     </div>
   );
 }

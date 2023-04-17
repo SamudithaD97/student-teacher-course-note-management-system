@@ -1,5 +1,6 @@
 package com.example.studentmanagementsystem.Service.Note;
 
+import com.example.studentmanagementsystem.DTO.NoteDetailsDto;
 import com.example.studentmanagementsystem.DTO.NoteUpdateDto;
 import com.example.studentmanagementsystem.DTO.ResponseDto;
 import com.example.studentmanagementsystem.Entity.Note;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface NoteService {
-    List<Note> getNotes(Long Id,Boolean isStudent);
+    List<NoteDetailsDto> getNotes(Long Id, Boolean isStudent);
 
     Note addNote(Note note);
 

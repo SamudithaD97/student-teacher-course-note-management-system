@@ -16,4 +16,6 @@ public class worksInClassDto {
     private String topic;
     private String docPath;
     private String createdDate;
+
+    private String createdBy;
 }

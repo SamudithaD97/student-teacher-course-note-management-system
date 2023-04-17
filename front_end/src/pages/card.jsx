@@ -5,9 +5,9 @@ import Navigation from "./Sections/Navigation";
 
 function Card() {
   const [tableData, setTableData] = useState([]);
-  const [resID, setResID] = useState(null);
+  
   const navigate = useNavigate();
-
+const [resID, setResID] = useState(null);
   useEffect(() => {
     if ("user" in localStorage) {
       setResID(JSON.parse(localStorage.getItem("user")));
