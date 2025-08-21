@@ -24,9 +24,10 @@ The project is built with a **separate backend and frontend**, but everything ru
 
 ## 📂 Project Structure
 student-management-system/
-├── BACKEND/student-management-system # Spring Boot backend
-├── front_end # React frontend
-└── .idea # IDE configs
+├── BACKEND/student-management-system   # Spring Boot backend
+├── front_end                           # React frontend
+└── .idea                               # IDE configs
+
 
 
 ## 🚀 Getting Started (Backend + Frontend)
